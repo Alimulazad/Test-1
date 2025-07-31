@@ -5,169 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bio Dictionary (Bangla)</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Noto Sans Bengali', sans-serif;
-      background: #f9fafb;
-      color: #111827;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 0 15px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2rem;
-      color: #1f2937;
-    }
-    input {
-      width: 100%;
-      padding: 10px 15px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 2px solid #d1d5db;
-      margin-bottom: 25px;
-      box-sizing: border-box;
-    }
-    .card {
-      background: #d1fae5;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      border: 1px solid #34d399;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .word {
-      font-weight: 700;
-      font-size: 1.25rem;
-      color: #065f46;
-      margin-bottom: 6px;
-    }
-    .label {
-      font-weight: 600;
-      color: #065f46;
-    }
-    .not-found {
-      color: #b91c1c;
-      font-weight: 600;
-      text-align: center;
-      margin-top: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <h1>🔬 Bio Dictionary (Bangla)</h1>
   <input type="text" id="searchInput" placeholder="বায়োলজির শব্দ লিখুন (e.g. কোষ)" />
+  
+  <button id="addWordBtn">➕ Add Word</button>
 
   <div id="result"></div>
 
-  <script>
-    const data = {
-            algae: { class: "Organism", meaning: "শৈবাল", example: "Algae can perform photosynthesis.", explanation: "এককোষী বা বহুকোষী উদ্ভিদ যারা খাদ্য তৈরি করতে পারে" },
-      amoeba: { class: "Protist", meaning: "অ্যামিবা", example: "Amoeba moves using pseudopodia.", explanation: "এককোষী জীব যা ছদ্মপদ ব্যবহার করে চলাফেরা করে" },
-      antibody: { class: "Protein", meaning: "অ্যান্টিবডি", example: "Antibodies fight infections.", explanation: "রোগ প্রতিরোধে সহায়ক প্রোটিন" },
-      antigen: { class: "Substance", meaning: "অ্যান্টিজেন", example: "Antigens trigger immune response.", explanation: "দেহে প্রতিরক্ষা প্রতিক্রিয়া সৃষ্টি করে এমন বস্তু" },
-      asexual: { class: "Reproduction", meaning: "অলিঙ্গ প্রজনন", example: "Bacteria reproduce asexually.", explanation: "প্রজননের প্রক্রিয়া যেখানে যৌন কোষের দরকার হয় না" },
-      bacteria: { class: "Organism", meaning: "ব্যাকটেরিয়া", example: "Bacteria can be harmful or helpful.", explanation: "এককোষী প্রোক্যারিওটিক জীব" },
-      binaryfission: { class: "Process", meaning: "দ্বিখণ্ডন", example: "Bacteria divide by binary fission.", explanation: "একটি কোষ দুটি সমান কোষে বিভক্ত হয়" },
-      carnivore: { class: "Organism", meaning: "মাংসাশী", example: "Tigers are carnivores.", explanation: "যে জীব অন্য জীবকে খেয়ে বাঁচে" },
-      cellwall: { class: "Structure", meaning: "কোষ প্রাচীর", example: "Plant cells have cell walls.", explanation: "কোষের বাইরের দৃঢ় আবরণ" },
-      centromere: { class: "Structure", meaning: "সেন্ট্রোমিয়ার", example: "Centromere joins chromatids.", explanation: "ক্রোমাটিডকে একত্রে রাখে" },
-      chloroplast: { class: "Organelle", meaning: "ক্লোরোপ্লাস্ট", example: "Photosynthesis occurs in chloroplast.", explanation: "যেখানে গাছ খাদ্য তৈরি করে" },
-      cilia: { class: "Structure", meaning: "সিলিয়া", example: "Cilia help in movement.", explanation: "ছোট চুলের মতো গঠন যা চলনে সাহায্য করে" },
-      diploid: { class: "Genetic", meaning: "ডিপ্লয়েড", example: "Human cells are diploid.", explanation: "যেখানে জোড়া ক্রোমোজোম থাকে (2n)" },
-      diffusion: { class: "Process", meaning: "প্রসরণ", example: "Oxygen diffuses into blood.", explanation: "এক স্থান থেকে অন্য স্থানে পদার্থের চলন" },
-      dominant: { class: "Genetics", meaning: "প্রভাবশালী", example: "Dominant genes express traits.", explanation: "যে জিন অন্য জিনকে ঢেকে দেয়" },
-      eukaryote: { class: "Cell Type", meaning: "ইউক্যারিওট", example: "Animal cells are eukaryotic.", explanation: "জটিল কোষ যার নিউক্লিয়াস আছে" },
-      fertilization: { class: "Reproduction", meaning: "নিষেক", example: "Fertilization forms a zygote.", explanation: "ডিম্বাণু ও শুক্রাণুর মিলন" },
-      gamete: { class: "Cell", meaning: "যৌন কোষ", example: "Gametes are sperm and egg.", explanation: "প্রজনন কোষ যা মিলন করে নতুন জীব গঠন করে" },
-      geneexpression: { class: "Process", meaning: "জিন প্রকাশ", example: "Gene expression makes proteins.", explanation: "জিন থেকে প্রোটিন তৈরি প্রক্রিয়া" },
-      genotype: { class: "Genetics", meaning: "জিনোটাইপ", example: "Genotype determines phenotype.", explanation: "জীবের জিনগত গঠন" },
-      glucose: { class: "Molecule", meaning: "গ্লুকোজ", example: "Glucose is a sugar.", explanation: "শর্করা যা শক্তি উৎপাদনে ব্যবহৃত হয়" },
-      golgi: { class: "Organelle", meaning: "গলগি বডি", example: "Golgi modifies proteins.", explanation: "প্রোটিন ও লিপিড প্রসেস করে" },
-      herbivore: { class: "Organism", meaning: "তৃণভোজী", example: "Cows are herbivores.", explanation: "শুধু গাছপালা খায় এমন জীব" },
-      homozygous: { class: "Genetics", meaning: "সমজাত", example: "AA is homozygous dominant.", explanation: "একই ধরনের জিনের জোড়া" },
-      hybrid: { class: "Genetics", meaning: "সংকর", example: "A mule is a hybrid.", explanation: "দুটি ভিন্ন প্রজাতির সংমিশ্রণে তৈরি জীব" },
-      immunity: { class: "Defense", meaning: "রোগ প্রতিরোধ ক্ষমতা", example: "Vaccines boost immunity.", explanation: "রোগ প্রতিরোধ করার দেহের ক্ষমতা" },
-      invertebrate: { class: "Classification", meaning: "মেরুদণ্ডহীন", example: "Insects are invertebrates.", explanation: "যাদের মেরুদণ্ড নেই এমন প্রাণী" },
-      lipid: { class: "Molecule", meaning: "লিপিড", example: "Fats are lipids.", explanation: "শরীরের জ্বালানি ও গঠন উপাদান" },
-      lysosome: { class: "Organelle", meaning: "লাইসোসোম", example: "Lysosome digests waste.", explanation: "অবাঞ্ছিত পদার্থ ভাঙে" },
-      meiosis: { class: "Process", meaning: "মিয়োসিস", example: "Meiosis creates gametes.", explanation: "যৌন কোষ তৈরি হয় যেখান থেকে" },
-      mitosis: { class: "Process", meaning: "মাইটোসিস", example: "Mitosis is cell division.", explanation: "সাধারণ কোষ বিভাজন" },
-      mutation: { class: "Change", meaning: "জিনগত পরিবর্তন", example: "Mutations change DNA.", explanation: "DNA তে হঠাৎ পরিবর্তন" },
-      neuron: { class: "Cell", meaning: "স্নায়ু কোষ", example: "Neurons transmit signals.", explanation: "তথ্য পরিবহনকারী কোষ" },
-      niche: { class: "Ecology", meaning: "বাসস্থান ভূমিকা", example: "Each species has a niche.", explanation: "প্রতিটি জীবের বাস্তুতন্ত্রে ভূমিকা" },
-      osmosis: { class: "Process", meaning: "আর্দ্রতা প্রবাহ", example: "Osmosis moves water.", explanation: "নিম্ন ঘনত্ব থেকে উচ্চ ঘনত্বে পানির চলন" },
-      pathogen: { class: "Microbe", meaning: "রোগজীবাণু", example: "Pathogens cause disease.", explanation: "রোগ সৃষ্টি করে এমন অণুজীব" },
-      phenotype: { class: "Genetics", meaning: "বাহ্যিক বৈশিষ্ট্য", example: "Phenotype is visible trait.", explanation: "জিন প্রকাশিত রূপ" },
-      phloem: { class: "Tissue", meaning: "ফ্লোয়েম", example: "Phloem carries food.", explanation: "উদ্ভিদে খাদ্য পরিবহনকারী টিস্যু" },
-      plasma: { class: "Blood", meaning: "প্লাজমা", example: "Plasma is liquid part of blood.", explanation: "রক্তের তরল অংশ" },
-      prokaryote: { class: "Cell Type", meaning: "প্রোক্যারিওট", example: "Bacteria are prokaryotes.", explanation: "সরল গঠনবিশিষ্ট নিউক্লিয়াসবিহীন কোষ" },
-      protein: { class: "Molecule", meaning: "প্রোটিন", example: "Proteins build body.", explanation: "দেহের গঠন ও কাজের জন্য আবশ্যক অণু" },
-      ribosome: { class: "Organelle", meaning: "রাইবোসোম", example: "Ribosomes make proteins.", explanation: "প্রোটিন সংশ্লেষকারী অঙ্গানু" },
-      root: { class: "Plant Part", meaning: "মূল", example: "Roots absorb water.", explanation: "উদ্ভিদের নিচের অংশ, পানি ও খনিজ টানে" },
-      stem: { class: "Plant Part", meaning: "কাণ্ড", example: "Stem supports the plant.", explanation: "উদ্ভিদকে ধরে রাখে ও পরিবহন করে" },
-      stomata: { class: "Structure", meaning: "রন্ধ্র", example: "Stomata regulate gas exchange.", explanation: "পাতার ছোট ছিদ্র যা গ্যাস প্রবাহ নিয়ন্ত্রণ করে" },
-      transpiration: { class: "Process", meaning: "বাষ্পীভবন", example: "Plants lose water via transpiration.", explanation: "গাছ থেকে পানির বাষ্পীভবন" },
-      vaccine: { class: "Medical", meaning: "টিকা", example: "Vaccines prevent disease.", explanation: "রোগ প্রতিরোধে ব্যবহৃত অ্যান্টিজেন" },
-      vertebrate: { class: "Classification", meaning: "মেরুদণ্ডযুক্ত", example: "Birds are vertebrates.", explanation: "যাদের মেরুদণ্ড থাকে" },
-      virus: { class: "Microbe", meaning: "ভাইরাস", example: "Viruses can cause flu.", explanation: "জীবিত কোষে প্রবেশ করে গুণিত হয় এমন সংক্রামক কণিকা" },
-      zygote: { class: "Cell", meaning: "যুগ্মকোষ", example: "Zygote is fertilized egg.", explanation: "ডিম্বাণু ও শুক্রাণু মিলনে গঠিত কোষ" },
-      cyto: { class: "Root", meaning: "কোষ", example: "Cytoplasm", explanation: "কোষের অভ্যন্তরীণ তরল পদার্থ" },
-      bio: { class: "Prefix", meaning: "জীবন", example: "Biology", explanation: "জীব ও জীবনের অধ্যয়ন" },
-      logy: { class: "Suffix", meaning: "অধ্যয়ন", example: "Biology", explanation: "কোনো বিষয়ের বিজ্ঞানভিত্তিক অধ্যয়ন" },
-      derm: { class: "Root", meaning: "ত্বক", example: "Dermatology", explanation: "চর্ম সংক্রান্ত চিকিৎসা বিজ্ঞান" },
-      auto: { class: "Prefix", meaning: "স্বয়ং", example: "Autotroph", explanation: "স্বয়ং খাদ্য তৈরিকারী জীব" },
-      cytoplasm: { class: "Organelle", meaning: "সাইটোপ্লাজম", example: "The cytoplasm fills the cell.", explanation: "কোষের অভ্যন্তরীণ তরল পদার্থ" },
-      nucleus: { class: "Organelle", meaning: "কেন্দ্রক", example: "The nucleus controls cell activities.", explanation: "কোষের নিয়ন্ত্রণ কেন্দ্র" },
-      mitochondria: { class: "Organelle", meaning: "মাইটোকন্ড্রিয়া", example: "Mitochondria are the powerhouse of the cell.", explanation: "শক্তি উৎপাদনের অঙ্গানু" },
-      chromosome: { class: "Structure", meaning: "ক্রোমোজোম", example: "Humans have 46 chromosomes.", explanation: "জিন সংরক্ষণের কাঠামো" },
-      gene: { class: "Unit", meaning: "জিন", example: "Genes determine our traits.", explanation: "বংশগতির একক" },
-      dna: { class: "Molecule", meaning: "ডিএনএ", example: "DNA carries genetic information.", explanation: "জিনগত তথ্য ধারণকারী অণু" },
-      rna: { class: "Molecule", meaning: "আরএনএ", example: "RNA helps in protein synthesis.", explanation: "প্রোটিন সংশ্লেষে সহায়ক অণু" },
-      enzyme: { class: "Protein", meaning: "এনজাইম", example: "Enzymes speed up chemical reactions.", explanation: "রাসায়নিক বিক্রিয়া তরান্বিতকারী প্রোটিন" },
-      cell: { class: "Basic Unit", meaning: "কোষ", example: "All organisms are made of cells.", explanation: "জীবের মৌলিক একক" },
-      tissue: { class: "Structure", meaning: "টিস্যু", example: "Muscle tissue helps in movement.", explanation: "একই রকম কোষের সমষ্টি" },
-      organ: { class: "System", meaning: "অঙ্গ", example: "The heart is an organ.", explanation: "টিস্যুর সমন্বয়ে গঠিত শরীরের অংশ" },
-      photosynthesis: { class: "Process", meaning: "জীবসংশ্লেষণ", example: "Photosynthesis occurs in leaves.", explanation: "গাছের খাদ্য তৈরির প্রক্রিয়া" },
-      respiration: { class: "Process", meaning: "শ্বসন", example: "Respiration provides energy.", explanation: "শক্তি উৎপাদনের প্রক্রিয়া" },
-      chlorophyll: { class: "Pigment", meaning: "ক্লোরোফিল", example: "Chlorophyll makes leaves green.", explanation: "সবুজ রঙের রঞ্জক পদার্থ" },
-      ecosystem: { class: "System", meaning: "বাস্তুতন্ত্র", example: "An ecosystem includes all organisms.", explanation: "জীব ও পরিবেশের সম্পর্ক" },
-      habitat: { class: "Environment", meaning: "আবাসস্থল", example: "A forest is a habitat.", explanation: "জীবের বসবাসের স্থান" },
-      adaptation: { class: "Trait", meaning: "অভিযোজন", example: "Camels have adaptations for desert.", explanation: "পরিবেশের সঙ্গে খাপ খাওয়ানোর বৈশিষ্ট্য" },
-      mutation: { class: "Change", meaning: "জিনগত পরিবর্তন", example: "Mutation can cause diseases.", explanation: "ডিএনএ তে হঠাৎ পরিবর্তন" },
-      evolution: { class: "Theory", meaning: "বিবর্তন", example: "Humans evolved from primates.", explanation: "জীবের ধাপে ধাপে পরিবর্তন" },
-      autotroph: { class: "Organism", meaning: "স্বপোষী", example: "Plants are autotrophs.", explanation: "আলোক বা রাসায়নিক শক্তি ব্যবহার করে খাদ্য তৈরি করে" },
-      heterotroph: { class: "Organism", meaning: "পরপোষী", example: "Animals are heterotrophs.", explanation: "অন্য জীবের উপর নির্ভর করে খাদ্য গ্রহণকারী জীব" }
-    };
+  <!-- Popup Form -->
+  <div id="popupForm">
+    <div class="form-box">
+      <h2>নতুন শব্দ যুক্ত করুন</h2>
+      <input type="text" id="newWord" placeholder="Word (e.g. chloroplast)" />
+      <input type="text" id="newClass" placeholder="Class (e.g. Organelle)" />
+      <input type="text" id="newMeaning" placeholder="Meaning (বাংলায়)" />
+      <input type="text" id="newExample" placeholder="Example sentence" />
+      <input type="text" id="newExplanation" placeholder="Explanation" />
+      <button id="submitWord">✅ Add</button>
+      <button id="cancelWord">❌ Cancel</button>
+    </div>
+  </div>
 
-    const input = document.getElementById("searchInput");
-    const resultDiv = document.getElementById("result");
-
-    input.addEventListener("input", () => {
-      const query = input.value.trim().toLowerCase();
-      resultDiv.innerHTML = "";
-
-      if (!query) return;
-
-      const results = Object.entries(data).filter(([key, value]) => key.includes(query));
-
-      if (results.length > 0) {
-        resultDiv.innerHTML = results.map(([key, word]) => `
-          <div class="card">
-            <div class="word">🔍 ${key}</div>
-            <div><span class="label">📚 Class:</span> ${word.class}</div>
-            <div><span class="label">🔤 Meaning:</span> ${word.meaning}</div>
-            <div><span class="label">🧪 Example:</span> ${word.example}</div>
-            <div><span class="label">📖 Explanation:</span> ${word.explanation}</div>
-          </div>
-        `).join('');
-      } else {
-        resultDiv.innerHTML = `<div class="not-found">❌ শব্দটি খুঁজে পাওয়া যায়নি</div>`;
-      }
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
