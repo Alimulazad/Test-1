@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bio Dictionary (Bangla)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 15px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #1f2937;
+    }
+    input {
+      width: 100%;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 2px solid #d1d5db;
+      margin-bottom: 25px;
+      box-sizing: border-box;
+    }
+    .card {
+      background: #d1fae5;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #34d399;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .word {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #065f46;
+      margin-bottom: 6px;
+    }
+    .label {
+      font-weight: 600;
+      color: #065f46;
+    }
+    .not-found {
+      color: #b91c1c;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔬 Bio Dictionary (Bangla)</h1>
+  <input type="text" id="searchInput" placeholder="বায়োলজির শব্দ লিখুন (e.g. কোষ)" />
+
+  <div id="result"></div>
+
+  <script>
+    const data = {
+      cyto: {
+        class: "Root",
+        meaning: "কোষ",
+        example: "Cytoplasm",
+        explanation: "কোষের অভ্যন্তরীণ তরল পদার্থ"
+      },
+      bio: {
+        class: "Prefix",
+        meaning: "জীবন",
+        example: "Biology",
+        explanation: "জীব ও জীবনের অধ্যয়ন"
+      },
+      logy: {
+        class: "Suffix",
+        meaning: "অধ্যয়ন",
+        example: "Biology",
+        explanation: "কোনো বিষয়ের বিজ্ঞানভিত্তিক অধ্যয়ন"
+      },
+      derm: {
+        class: "Root",
+        meaning: "চর্ম (ত্বক)",
+        example: "Dermatology",
+        explanation: "চর্ম সংক্রান্ত চিকিৎসা বিজ্ঞান"
+      },
+      auto: {
+        class: "Prefix",
+        meaning: "স্বয়ং",
+        example: "Autotroph",
+        explanation: "স্বয়ং খাদ্য তৈরিকারী জীব"
+      }
+      // Add more words here...
+    };
+
+    const input = document.getElementById("searchInput");
+    const resultDiv = document.getElementById("result");
+
+    input.addEventListener("input", () => {
+      const query = input.value.trim().toLowerCase();
+      resultDiv.innerHTML = "";
+
+      if (!query) return;
+
+      const word = data[query];
+
+      if (word) {
+        resultDiv.innerHTML = `
+          <div class="card">
+            <div class="word">🔍 ${query}</div>
+            <div><span class="label">📚 Class:</span> ${word.class}</div>
+            <div><span class="label">🔤 Meaning:</span> ${word.meaning}</div>
+            <div><span class="label">🧪 Example:</span> ${word.example}</div>
+            <div><span class="label">📖 Explanation:</span> ${word.explanation}</div>
+          </div>
+        `;
+      } else {
+        resultDiv.innerHTML = `<div class="not-found">❌ শব্দটি খুঁজে পাওয়া যায়নি</div>`;
+      }
+    });
+  </script>
+
+</body>
+</html>
