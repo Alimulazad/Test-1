@@ -272,5 +272,287 @@ const dictionary = [
 
 
 
-  
-  ];
+  const dictionary = [
+  {
+    word: "eardrum",
+    meaning: "কানের ঝিল্লি, যা শব্দ কম্পন গ্রহণ করে।",
+    breakdown: "ear (কান) + drum (ঢাক)",
+    example: "কানের ঝিল্লি শব্দ তরঙ্গে কম্পিত হয়।"
+  },
+  {
+    word: "cochlea",
+    meaning: "কানের অভ্যন্তরীণ অংশ, যা শব্দ তরঙ্গ সংবেদন করে।",
+    breakdown: "cochlea (শামুক আকৃতির)",
+    example: "ককলিয়া শব্দ তরঙ্গকে স্নায়বিক সংকেতে রূপান্তর করে।"
+  },
+  {
+    word: "ossicles",
+    meaning: "কানের তিনটি ক্ষুদ্র হাড়, যা শব্দ কম্পন পরিবহন করে।",
+    breakdown: "oss- (হাড়) + -icle (ছোট)",
+    example: "ওসিকলস শব্দ কম্পন বাড়িয়ে দেয়।"
+  },
+  {
+    word: "malleus",
+    meaning: "কানের হাড়, যা eardrum থেকে শব্দ পরিবহন করে।",
+    breakdown: "malleus (হাতুড়ি)",
+    example: "ম্যালিউস eardrum এর কম্পন গ্রহণ করে।"
+  },
+  {
+    word: "incus",
+    meaning: "কানের হাড়, যা malleus থেকে শব্দ পরিবহন করে।",
+    breakdown: "incus (নখ)",
+    example: "ইনকাস শব্দ কম্পন incus থেকে stapes-এ পাঠায়।"
+  },
+  {
+    word: "stapes",
+    meaning: "কানের হাড়, যা cochlea-তে শব্দ পরিবহন করে।",
+    breakdown: "stapes (খুঁটি)",
+    example: "স্টেপেস cochlea-তে কম্পন প্রেরণ করে।"
+  },
+  {
+    word: "eustachianTube",
+    meaning: "কান ও গলার মধ্যে সংযোগকারী নল, যা চাপ নিয়ন্ত্রণ করে।",
+    breakdown: "Eustachian (শারীরবিদের নামে) + tube (নল)",
+    example: "ইউস্টেশিয়ান টিউব কানের চাপ সমান করে।"
+  },
+  {
+    word: "auditoryNerve",
+    meaning: "কান থেকে মস্তিষ্কে শব্দ তথ্য পরিবহনকারী স্নায়ু।",
+    breakdown: "audit- (শোনা) + nerve (স্নায়ু)",
+    example: "অডিটরি নার্ভ শব্দ সংকেত মস্তিষ্কে পাঠায়।"
+  },
+  {
+    word: "outerEar",
+    meaning: "কানের বাইরের অংশ, যা শব্দ সংগ্রহ করে।",
+    breakdown: "outer (বাইরের) + ear (কান)",
+    example: "আউটার ইয়ার শব্দকে eardrum-এ পরিচালনা করে।"
+  },
+  {
+    word: "middleEar",
+    meaning: "কানের মধ্যবর্তী অংশ, যেখানে ossicles অবস্থিত।",
+    breakdown: "middle (মাঝের) + ear (কান)",
+    example: "মিডল ইয়ারে শব্দ কম্পন বাড়ে।"
+  },
+  {
+    word: "innerEar",
+    meaning: "কানের অভ্যন্তরীণ অংশ, যেখানে cochlea ও ভারসাম্য প্রক্রিয়া হয়।",
+    breakdown: "inner (অভ্যন্তরীণ) + ear (কান)",
+    example: "ইনার ইয়ার শব্দ ও ভারসাম্য নিয়ন্ত্রণ করে।"
+  },
+  {
+    word: "pinna",
+    meaning: "কানের বাইরের কার্টিলেজ, যা শব্দ দিক নির্দেশ করে।",
+    breakdown: "pinna (ফ্ল্যাপ)",
+    example: "পিনা শব্দকে একত্রিত করে।"
+  },
+  {
+    word: "tympanicMembrane",
+    meaning: "eardrum-এর প্রযুক্তিগত নাম, শব্দ কম্পন গ্রহণ করে।",
+    breakdown: "tympanic (ঢাকের মতো) + membrane (ঝিল্লি)",
+    example: "টিম্পানিক মেমব্রেন শব্দ তরঙ্গ গ্রহণ করে।"
+  },
+  {
+    word: "semicircularCanals",
+    meaning: "কানের অংশ, যা ভারসাম্য নিয়ন্ত্রণ করে।",
+    breakdown: "semi- (অর্ধেক) + circular (গোলাকার) + canals (নালী)",
+    example: "সেমিসারকুলার ক্যানালস মাথার গতি ট্র্যাক করে।"
+  },
+  {
+    word: "vestibularSystem",
+    meaning: "কানের অংশ, যা ভারসাম্য ও স্থান চেতনা নিয়ন্ত্রণ করে।",
+    breakdown: "vestibular (ভারসাম্য) + system (পদ্ধতি)",
+    example: "ভেস্টিবুলার সিস্টেম হাঁটার সময় সাহায্য করে।"
+  },
+  {
+    word: "utricle",
+    meaning: "কানের অংশ, যা জোর ও গতি সংবেদন করে।",
+    breakdown: "utricle (ছোট থলি)",
+    example: "ইউট্রিকল মাথার সরণ টের পায়।"
+  },
+  {
+    word: "saccule",
+    meaning: "কানের অংশ, যা উল্লম্ব গতি সংবেদন করে।",
+    breakdown: "saccule (ছোট থলি)",
+    example: "স্যাকুল উল্লম্ব গতি পরিমাপ করে।"
+  },
+  {
+    word: "otolith",
+    meaning: "কানের ক্যালসিয়াম ক্রিস্টাল, যা গতি সংবেদন করে।",
+    breakdown: "oto- (কান) + lith (পাথর)",
+    example: "ওটোলিথ ভারসাম্যে সাহায্য করে।"
+  },
+  {
+    word: "auditoryCanal",
+    meaning: "কানের বাইরে থেকে eardrum-এর মধ্যে সংযোগকারী নালী।",
+    breakdown: "auditory (শ্রবণ) + canal (নালী)",
+    example: "অডিটরি ক্যানাল শব্দকে eardrum-এ পাঠায়।"
+  },
+  {
+    word: "cerumen",
+    meaning: "কানের মোম, যা কানকে সুরক্ষা দেয়।",
+    breakdown: "cerumen (কানের মোম)",
+    example: "সেরুমেন কানের ভিতরে ধুলো প্রতিরোধ করে।"
+  },
+  {
+    word: "tinnitus",
+    meaning: "কানে শব্দ শোনার সমস্যা, যেমন ঝিঁঝি শব্দ।",
+    breakdown: "tinnitus (ঝিঁঝি শব্দ)",
+    example: "টিনিটাস কানে অপ্রত্যাশিত শব্দ তৈরি করে।"
+  },
+  {
+    word: "hearingLoss",
+    meaning: "শ্রবণ ক্ষমতার হ্রাস, যা শব্দ শোনার ক্ষতি করে।",
+    breakdown: "hearing (শোনা) + loss (হার)",
+    example: "হিয়ারিং লস বয়সের সাথে বাড়তে পারে।"
+  },
+  {
+    word: "otoscope",
+    meaning: "যন্ত্র, যা কান পরীক্ষা করে।",
+    breakdown: "oto- (কান) + scope (দেখা)",
+    example: "ওটোস্কোপে ডাক্তার কানের ভিতর দেখে।"
+  },
+  {
+    word: "audiogram",
+    meaning: "শ্রবণ ক্ষমতা পরীক্ষার ফলাফলের চিত্র।",
+    breakdown: "audio- (শব্দ) + gram (লেখা)",
+    example: "অডিওগ্রাম শ্রবণ ক্ষতির মাত্রা দেখায়।"
+  },
+  {
+    word: "audiologist",
+    meaning: "শ্রবণ বিশেষজ্ঞ, যিনি কানের সমস্যা চিকিৎসা করেন।",
+    breakdown: "audio- (শব্দ) + logist (বিশেষজ্ঞ)",
+    example: "অডিওলজিস্ট শ্রবণ সহায়তা সরবরাহ করেন।"
+  },
+  {
+    word: "earwax",
+    meaning: "কানের মোম, যা কানের স্বাস্থ্য রক্ষা করে।",
+    breakdown: "ear (কান) + wax (মোম)",
+    example: "ইয়ারওয়্যাক্স কানকে পরিষ্কার রাখে।"
+  },
+  {
+    word: "vertigo",
+    meaning: "কানের সমস্যা থেকে ঘোরাঘুরি অনুভূতি।",
+    breakdown: "vertigo (ঘোর)",
+    example: "ভার্টিগো মাথা ঘোরার কারণ হতে পারে।"
+  },
+  {
+    word: "mastoid",
+    meaning: "কানের পিছনের হাড়, যা সংক্রমণ হতে পারে।",
+    breakdown: "mastoid (স্তনাকৃতি)",
+    example: "ম্যাস্টয়েডে সংক্রমণ ব্যথা দিতে পারে।"
+  },
+  {
+    word: "labyrinth",
+    meaning: "কানের জটিল গঠন, যা শ্রবণ ও ভারসাম্য নিয়ন্ত্রণ করে।",
+    breakdown: "labyrinth (ঘুরঘুটি পথ)",
+    example: "ল্যাবিরিন্থ শব্দ ও ভারসাম্য প্রক্রিয়া করে।"
+  },
+  {
+    word: "perilymph",
+    meaning: "কানের তরল, যা শব্দ কম্পন পরিবহন করে।",
+    breakdown: "peri- (চারপাশে) + lymph (তরল)",
+    example: "পেরিলিম্ফ cochlea-তে কম্পন স্থানান্তর করে।"
+  },
+  {
+    word: "endolymph",
+    meaning: "কানের অভ্যন্তরীণ তরল, যা ভারসাম্য নিয়ন্ত্রণে সাহায্য করে।",
+    breakdown: "endo- (ভিতরে) + lymph (তরল)",
+    example: "এন্ডোলিম্ফ ভারসাম্যের জন্য গুরুত্বপূর্ণ।"
+  },
+  {
+    word: "acoustic",
+    meaning: "শব্দের সাথে সম্পর্কিত, বিশেষ করে কানে।",
+    breakdown: "acoustic (শব্দ)",
+    example: "অ্যাকোস্টিক তরঙ্গ শ্রবণে সাহায্য করে।"
+  },
+  {
+    word: "otitis",
+    meaning: "কানের সংক্রমণ, যা ব্যথা সৃষ্টি করে।",
+    breakdown: "oto- (কান) + -itis (বীমারি)",
+    example: "ওটাইটিস শিশুদের মধ্যে সাধারণ।"
+  },
+  {
+    word: "cholesteatoma",
+    meaning: "কানে অস্বাভাবিক ত্বক বৃদ্ধি, যা ক্ষতি করতে পারে।",
+    breakdown: "chole- (প্রস্ত) + steat- (চর্বি) + -oma (বৃদ্ধি)",
+    example: "কোলেস্টিয়াটোমা কানের হাড়ে ক্ষতি করতে পারে।"
+  },
+  {
+    word: "otosclerosis",
+    meaning: "কানের হাড়ের অস্বাভাবিক কঠিনতা, যা শ্রবণ কমায়।",
+    breakdown: "oto- (কান) + scler- (কঠিন) + -osis (অবস্থা)",
+    example: "ওটোস্ক্লেরোসিস শ্রবণ ক্ষতি সৃষ্টি করে।"
+  },
+  {
+    word: "hearingAid",
+    meaning: "যন্ত্র, যা শ্রবণ ক্ষতি পূরণ করে।",
+    breakdown: "hearing (শোনা) + aid (সাহায্য)",
+    example: "হিয়ারিং এড শব্দ বাড়িয়ে দেয়।"
+  },
+  {
+    word: "decibel",
+    meaning: "শব্দের তীব্রতা মাপার একক।",
+    breakdown: "decibel (শব্দ একক)",
+    example: "ডেসিবেল ০ থেকে ১২০ পর্যন্ত পরিমাপ করে।"
+  },
+  {
+    word: "frequency",
+    meaning: "শব্দ তরঙ্গের ঘনত্ব, যা পিচ নির্ধারণ করে।",
+    breakdown: "frequency (ঘনত্ব)",
+    example: "ফ্রিকোয়েন্সি উচ্চ পিচ তৈরি করে।"
+  },
+  {
+    word: "pitch",
+    meaning: "শব্দের উচ্চতা বা নিম্নতা।",
+    breakdown: "pitch (স্বর)",
+    example: "পিচ গানের সুর নির্ধারণ করে।"
+  },
+  {
+    word: "amplitude",
+    meaning: "শব্দ তরঙ্গের তীব্রতা, যা ভলিউম নির্ধারণ করে।",
+    breakdown: "amplitude (আমানত)",
+    example: "অ্যামপ্লিচুড বেশি হলে শব্দ জোরালো হয়।"
+  },
+  {
+    word: "soundWave",
+    meaning: "শব্দের তরঙ্গ, যা কানে গ্রহণ করা হয়।",
+    breakdown: "sound (শব্দ) + wave (তরঙ্গ)",
+    example: "সাউন্ড ওয়েভ কানে শ্রবণ হয়।"
+  },
+  {
+    word: "resonance",
+    meaning: "শব্দের প্রতিধ্বনি, যা শ্রবণে প্রভাব ফেলে।",
+    breakdown: "resonance (প্রতিধ্বনি)",
+    example: "রেজোন্যান্স কানে শব্দ বাড়ায়।"
+  },
+  {
+    word: "earInfection",
+    meaning: "কানে সংক্রমণ, যা ব্যথা ও শ্রবণ ক্ষতি করতে পারে।",
+    breakdown: "ear (কান) + infection (সংক্রমণ)",
+    example: "ইয়ার ইনফেকশন ঔষধে চিকিৎসা করা যায়।"
+  },
+  {
+    word: "perforation",
+    meaning: "eardrum-এর ফুটো, যা শ্রবণে সমস্যা সৃষ্টি করে।",
+    breakdown: "perforation (ফুটো)",
+    example: "পারফরেশন শ্রবণ ক্ষতি ঘটাতে পারে।"
+  },
+  {
+    word: "ototoxicity",
+    meaning: "ঔষধ বা রাসায়নিক যা কানের ক্ষতি করে।",
+    breakdown: "oto- (কান) + toxicity (বিষাক্ততা)",
+    example: "ওটোটক্সিসিটি কানের স্নায়ু নষ্ট করতে পারে।"
+  },
+  {
+    word: "audiometry",
+    meaning: "শ্রবণ ক্ষমতা পরীক্ষার পদ্ধতি।",
+    breakdown: "audio- (শব্দ) + metry (মাপ)",
+    example: "অডিওমেট্রি শ্রবণ পরীক্ষা করে।"
+  },
+  {
+    word: "impedance",
+    meaning: "শব্দ তরঙ্গের প্রতিরোধ, যা শ্রবণ প্রভাবিত করে।",
+    breakdown: "impedance (প্রতিরোধ)",
+    example: "ইম্পিডেন্স শব্দ সংক্রমণে বাধা দেয়।"
+  }
+];
