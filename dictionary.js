@@ -267,12 +267,6 @@ const dictionary = [
     breakdown: "en- (ভিতরে) + zyme (খামির)",
     example: "এনজাইম হজম প্রক্রিয়ায় খাদ্য ভাঙতে সাহায্য করে।"
   },
-
-
-
-
-
-  const dictionary = [
   {
     word: "eardrum",
     meaning: "কানের ঝিল্লি, যা শব্দ কম্পন গ্রহণ করে।",
@@ -556,3 +550,4 @@ const dictionary = [
     example: "ইম্পিডেন্স শব্দ সংক্রমণে বাধা দেয়।"
   }
 ];
+
